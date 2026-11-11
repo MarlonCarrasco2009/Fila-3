@@ -4,16 +4,16 @@
 <footer><span>DESIGNED TO MOVE.</span><span>DRAG OR USE ARROWS TO EXPLORE</span><span>© 2026 PUMA CONCEPT</span></footer><dialog id="modal"><button id="close" class="close">✕</button><h2>THE CLOSET</h2><p>Una demostración interactiva inspirada en el video. Las prendas son ilustraciones SVG originales; reemplázalas con fotos de tus productos cuando quieras.</p><button id="dismiss">CONTINUE EXPLORING →</button></dialog>
 <!-- EDITA AQUÍ LAS URLS DE TUS 6 PRODUCTOS.
      Pega un enlace DIRECTO a una imagen (.png, .jpg, .webp, etc.).
-     Deja "" para conservar la ilustración original.
+     Si una URL falla, se verá la ilustración original automáticamente.
      También puedes usar rutas locales: "imagenes/camiseta.png". -->
 <script>
 window.PRODUCT_IMAGES = [
-  { front: "https://tse3.mm.bing.net/th/id/OIP.mX2Vd-RN-dJEV0uUYJL00QHaJk?r=0&rs=1&pid=ImgDetMain&o=7&rm=3", back: "" }, // 1: polera azul
-  { front: "", back: "" }, // 2: camiseta negra
-  { front: "", back: "" }, // 3: pantalón marrón
-  { front: "", back: "" }, // 4: pantalón negro
-  { front: "", back: "" }, // 5: camiseta roja
-  { front: "", back: "" }  // 6: camiseta azul
+ { front: "https://tse3.mm.bing.net/th/id/OIP.mX2Vd-RN-dJEV0uUYJL00QHaJk?r=0&rs=1&pid=ImgDetMain&o=7&rm=3", back: "" }, // 1 Sudadera azul
+ { front: "https://substackcdn.com/image/fetch/w_1456%2Cc_limit%2Cf_auto%2Cq_auto%3Agood%2Cfl_progressive%3Asteep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe4200c20-3104-4e00-9335-73d461803956_1920x1080.jpeg", back: "" }, // 2 Camiseta negra
+ { front: "https://i5.walmartimages.com/seo/Hanes-Men-s-EcoSmart-Sweatpants-Comfortable-Fleece-Joggers-Cotton-Poly-Blend-Black-L_c311a912-e1e4-4962-b24b-4208b763a3d0.24dfb9b1c3135aea5940042a682aab42.png", back: "" }, // 3 Jogger negro
+ { front: "https://wallpapers.com/images/hd/street-style-black-t-shirt-png-jsc-txd3a1b75oobph91.png", back: "" }, // 4 Conjunto urbano
+ { front: "https://commons.wikimedia.org/wiki/Special:FilePath/Adidas_running_outfit,_red_T-shirt_and_black_skort.jpg?width=480", back: "" }, // 5 Camiseta roja
+ { front: "https://commons.wikimedia.org/wiki/Special:FilePath/T-shirt.jpg?width=480", back: "" } // 6 Camiseta clásica
 ];
 </script>
 <div class="zoom-overlay" id="zoomOverlay" aria-hidden="true" role="dialog" aria-label="Vista ampliada de la prenda"><button type="button" id="zoomClose" class="zoom-close" aria-label="Cerrar zoom">✕</button><div class="zoom-card" id="zoomCard"></div><p class="zoom-caption" id="zoomCaption"></p><span class="zoom-hint">CLIC FUERA O ESC PARA CERRAR</span></div><script src="script.js"></script></body></html>
