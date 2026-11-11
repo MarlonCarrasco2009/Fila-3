@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0a1020">
+  <meta name="description" content="Página personal de Diego Meza.">
+  <title>Diego Meza | Mi espacio personal</title>
+  <style>
+    :root{color-scheme:dark;--bg:#0a1020;--text:#eff7ff;--sub:#adc0d8;--aqua:#6ce8eb;--violet:#9a82ff}
+    *{box-sizing:border-box}
+    body{margin:0;min-height:100vh;overflow-x:hidden;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+    .background{position:fixed;inset:0;z-index:-1;background:radial-gradient(circle at 12% 17%,#3853a96b,transparent 38%),radial-gradient(circle at 90% 85%,#286d9270,transparent 42%),linear-gradient(130deg,#090d1b,#121c38 70%,#0c152a);background-size:130% 130%;animation:shift 14s ease-in-out infinite alternate}
+    .background:after{content:"";position:absolute;inset:0;opacity:.17;background-image:linear-gradient(#b7d5ff26 1px,transparent 1px),linear-gradient(90deg,#b7d5ff26 1px,transparent 1px);background-size:50px 50px}
+    @keyframes shift{to{background-position:100% 100%}}
+    .page{max-width:1140px;margin:auto;min-height:100vh;padding:34px 28px;display:flex;flex-direction:column}
+    header{display:flex;justify-content:space-between;align-items:center;gap:20px}
+    .brand{display:flex;align-items:center;gap:12px;font-size:19px;font-weight:800;letter-spacing:.2px}
+    .brand-icon{width:42px;height:42px;display:grid;place-items:center;color:#0b152b;background:linear-gradient(135deg,#75e6eb,#aa9bff);border-radius:14px;box-shadow:0 6px 30px #5ce3e04d}
+    .header-tag{padding:9px 14px;border:1px solid #ffffff30;border-radius:40px;background:#ffffff0c;font-size:12px;color:#c8e9f4}
+    main{flex:1;display:grid;grid-template-columns:1.18fr 1fr;align-items:center;gap:55px;padding:70px 0}
+    .eyebrow{display:flex;align-items:center;gap:10px;color:var(--aqua);font-size:12px;font-weight:800;letter-spacing:3px;margin-bottom:24px}
+    .dot{display:block;width:9px;height:9px;background:var(--aqua);border-radius:50%;box-shadow:0 0 20px var(--aqua)}
+    h1{font-size:clamp(55px,7.2vw,100px);line-height:1.02;letter-spacing:-4px;margin:0 0 24px;font-weight:800}
+    h1 span{background:linear-gradient(110deg,#fff,#95c7ff 42%,#72eedb);background-clip:text;-webkit-background-clip:text;color:transparent}
+    .desc{max-width:530px;color:var(--sub);font-size:17px;line-height:1.85}
+    .chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:32px}
+    .chips span{font-size:13px;color:#d9e9fb;padding:10px 14px;border:1px solid #ffffff32;background:#ffffff0c;border-radius:25px}
+    .art{width:min(100%,390px);aspect-ratio:1;justify-self:center;position:relative;display:grid;place-items:center}
+    .ring{position:absolute;inset:0;border:1px solid #96ceff5e;border-radius:50%;animation:turn 20s linear infinite}
+    .ring:before{content:"✦";position:absolute;left:18%;top:5%;font-size:25px;color:#88e7f5}
+    .ring.inner{inset:12%;border-style:dashed;animation-direction:reverse;animation-duration:27s}
+    .badge{width:64%;aspect-ratio:1;display:grid;place-items:center;border-radius:34%;background:linear-gradient(135deg,#294aaf,#4c8beb 48%,#33d2c2);transform:rotate(-8deg);box-shadow:0 0 70px #598cff76,0 20px 75px #0007;animation:float 5s ease-in-out infinite}
+    .badge span{transform:rotate(8deg);font-size:clamp(65px,10vw,118px);font-weight:900;letter-spacing:-8px}
+    @keyframes turn{to{transform:rotate(360deg)}}
+    @keyframes float{50%{transform:rotate(-5deg) translateY(-15px)}}
+    footer{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;border-top:1px solid #ffffff22;padding-top:22px;color:#9caecb;font-size:12px}
+    @media(max-width:790px){.page{padding:22px 19px 35px}main{grid-template-columns:1fr;gap:30px;text-align:center;padding:55px 0}.eyebrow,.chips{justify-content:center}.desc{margin:auto}.art{order:-1;max-width:260px}h1{font-size:clamp(51px,11vw,72px);letter-spacing:-2px}}
+    @media(max-width:420px){.header-tag{display:none}.art{max-width:220px}footer{justify-content:center}.desc{font-size:15px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important}}
+  </style>
+</head>
+<body>
+  <div class="background" aria-hidden="true"></div>
+  <div class="page">
+    <header>
+      <div class="brand"><span class="brand-icon">DM</span> Diego Meza</div>
+      <span class="header-tag">✦ Mi página personal</span>
+    </header>
+    <main>
+      <section>
+        <div class="eyebrow"><span class="dot"></span> BIENVENIDO A MI ESPACIO</div>
+        <h1>Hola, soy<br><span>Diego Meza.</span></h1>
+        <p class="desc">Este es mi rincón digital, donde comparto mi interés por la tecnología, la creatividad y los nuevos proyectos. ¡Gracias por visitar mi página!</p>
+        <div class="chips"><span>✦ Tecnología</span><span>✦ Creatividad</span><span>✦ Aprendizaje</span></div>
+      </section>
+      <div class="art" role="img" aria-label="Monograma animado con las iniciales DM">
+        <div class="ring"></div><div class="ring inner"></div>
+        <div class="badge"><span>DM</span></div>
+      </div>
+    </main>
+    <footer><span>© <span id="year"></span> Diego Meza</span><span>Hecho con HTML y CSS</span></footer>
+  </div>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
