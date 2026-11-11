@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#161616">
+<meta name="description" content="Selección editorial de camisetas de fútbol Nike, Adidas y Puma. Catálogo visual de demostración.">
+<title>THE KIT CLUB — Catálogo premium de fútbol</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#191a1b;--muted:#82817e;--paper:#f4f2ee;--white:#fff;--line:#e8e5df;--accent:#da6943}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;color:var(--ink);background:var(--paper);font-family:"DM Sans",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+button,input,a{font:inherit}
+button{cursor:pointer}
+a{color:inherit;text-decoration:none}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #e99a61;outline-offset:3px}
+.announcement{min-height:32px;padding:9px 16px;text-align:center;color:#eee;font-size:10px;letter-spacing:2.2px;background:#1a1a1a}
+header{display:flex;justify-content:space-between;align-items:center;gap:25px;padding:25px max(25px,calc((100vw - 1340px)/2));background:#fff;border-bottom:1px solid #eae7e1}
+.identity{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.monogram{width:39px;height:39px;border:1.5px solid #222;display:grid;place-items:center;font-size:16px;font-weight:800;letter-spacing:-4px;padding-right:3px;transform:rotate(-6deg)}
+.identity strong{display:block;font:800 17px Manrope,Arial,sans-serif;letter-spacing:-1px;line-height:1.1}
+.identity small{font-size:9px;color:#9b9993;letter-spacing:2px;font-weight:700}
+nav{display:flex;gap:31px;color:#494a49;font-size:12px;font-weight:700}
+nav a:hover{color:var(--accent)}
+.header-side{font-size:10px;letter-spacing:1.3px;text-transform:uppercase;color:#555;white-space:nowrap}
+main{max-width:1340px;padding:0 24px 72px;margin:auto}
+.intro{text-align:center;padding:43px 0 25px}
+.overline{font-size:10px;letter-spacing:3.2px;font-weight:800;color:#9b754e}
+.intro h1{font-family:Manrope,Arial,sans-serif;font-weight:800;font-size:clamp(40px,6vw,80px);letter-spacing:-5.8px;line-height:1.04;margin:13px 0 16px}
+.intro h1 em{font-style:normal;color:var(--accent)}
+.intro p{max-width:590px;color:#888680;font-size:13px;line-height:1.8;margin:0 auto}
+.filters{display:flex;justify-content:center;flex-wrap:wrap;align-items:center;gap:9px;margin:20px 0 30px}
+.filter{display:flex;gap:9px;align-items:center;border:1px solid #e0ddd8;padding:11px 23px;min-width:107px;justify-content:center;border-radius:100px;background:#fff;color:#494848;font-weight:800;font-size:12px;transition:.25s}
+.filter:hover{transform:translateY(-2px);border-color:#b8a99a}
+.filter.active{background:#1c1c1b;color:white;border-color:#1c1c1b;box-shadow:0 9px 18px #15151519}
+.filter .brand-icon{height:19px;width:24px;object-fit:contain}
+.filter.active .brand-icon{filter:invert(1)}
+.showroom{position:relative;border:1px solid #e6e3dc;border-radius:5px;background:linear-gradient(180deg,#fafafa,#fff 70%);overflow:hidden;box-shadow:0 35px 65px #27251d0b}
+.showroom:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 43%,#ece9e216,transparent 58%);z-index:0}
+.top-show{position:relative;z-index:3;text-align:center;padding-top:36px}
+.brand-heading{font:800 clamp(29px,4vw,51px)/1 Manrope,Arial,sans-serif;letter-spacing:-2.5px;margin:0;min-height:54px}
+.brand-strap{letter-spacing:3px;text-transform:uppercase;font-size:9px;color:#999;font-weight:800;margin-top:7px}
+.stage{height:405px;position:relative;isolation:isolate;overflow:hidden;margin-top:12px}
+.stage:before{content:"";height:1px;position:absolute;left:3%;right:3%;top:65px;background:linear-gradient(90deg,transparent,#c1beba 9%,#b3b1ad 91%,transparent);box-shadow:0 1px 1px #ddd;z-index:0}
+.stage:after{content:"";position:absolute;bottom:3px;left:14%;right:14%;height:22px;border-radius:50%;background:radial-gradient(ellipse,#00000018,transparent 73%);filter:blur(13px);z-index:0}
+.stage-card{position:absolute;left:50%;top:52%;width:242px;height:332px;display:grid;place-items:center;transform:translate(-50%,-50%) scale(.6);transition:transform .7s cubic-bezier(.23,1,.32,1),opacity .65s ease,filter .65s ease;opacity:0;pointer-events:none;z-index:1;will-change:transform}
+.stage-card .hanger{position:absolute;top:7px;left:50%;transform:translateX(-50%);width:66px;height:32px;color:#9b8272}
+.stage-card .hanger svg{display:block;width:100%;height:100%}
+.stage-card .photo{position:relative;margin-top:24px;width:230px;height:277px;display:grid;place-items:center}
+.stage-card .photo img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;filter:drop-shadow(0 13px 11px #0000000b)}
+.stage-card .fallback{display:none;text-align:center;place-items:center;width:90%;height:85%;background:#ece9e5;border:1px solid #e0d8cd;color:#393331;font-weight:800;letter-spacing:2px}
+.stage-card.is-broken .photo img{display:none}
+.stage-card.is-broken .fallback{display:grid}
+.stage-card[data-pos="-2"]{opacity:.33;filter:blur(3.2px);transform:translate(-50%,-50%) translateX(-340px) scale(.61) rotate(-7deg);z-index:1}
+.stage-card[data-pos="-1"]{opacity:.64;filter:blur(1.8px);transform:translate(-50%,-50%) translateX(-177px) scale(.81) rotate(-3deg);z-index:3}
+.stage-card[data-pos="0"]{opacity:1;filter:none;transform:translate(-50%,-50%) translateX(0) scale(1.11);z-index:6;pointer-events:auto}
+.stage-card[data-pos="1"]{opacity:.64;filter:blur(1.8px);transform:translate(-50%,-50%) translateX(177px) scale(.81) rotate(3deg);z-index:3}
+.stage-card[data-pos="2"]{opacity:.33;filter:blur(3.2px);transform:translate(-50%,-50%) translateX(340px) scale(.61) rotate(7deg);z-index:1}
+.stage-card[data-pos="hidden"]{opacity:0;filter:blur(6px);transform:translate(-50%,-50%) scale(.4);z-index:0}
+.stage-card[data-pos="0"]:hover{transform:translate(-50%,-50%) scale(1.18) translateY(-7px)}
+.stage-card .photo-badge{position:absolute;bottom:13px;left:50%;transform:translateX(-50%);white-space:nowrap;background:#171717e5;color:white;padding:7px 11px;border-radius:20px;font-size:9px;letter-spacing:1px;opacity:0;transition:.3s}
+.stage-card[data-pos="0"] .photo-badge{opacity:1}
+.stage-footer{position:relative;padding:18px 26px 32px;display:flex;justify-content:space-between;align-items:center;gap:18px;border-top:1px solid #f1eee8}
+.controls{display:flex;align-items:center;gap:10px}
+.round{width:42px;height:42px;border:1px solid #ddd9d2;border-radius:50%;display:grid;place-items:center;background:white;color:#252525;font-size:19px;transition:.2s}
+.round:hover{background:#171717;color:#fff;border-color:#171717}
+.count{font-size:11px;color:#93928e;letter-spacing:2px;font-weight:800;padding:0 9px}
+.stage-note{font-size:10px;letter-spacing:1.5px;color:#9c9993}
+.autoplay{border:1px solid #e4e0db;background:transparent;padding:10px 14px;border-radius:40px;font-size:11px;font-weight:700;color:#65635e}
+.autoplay:hover{border-color:#999}
+.details{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;max-width:1180px;margin:0 auto;padding:25px 6px 35px}
+.detail-info{display:flex;align-items:flex-start;gap:15px}
+.crest{width:49px;height:49px;object-fit:contain;flex-shrink:0}
+.crest-alt{display:none;border-radius:50%;background:#eae6df;place-items:center;width:49px;height:49px;font-size:11px;font-weight:800}
+.detail-kicker{font-size:10px;font-weight:800;letter-spacing:2.5px;color:#9e7d62}
+.details h2{font:800 clamp(22px,3vw,32px) Manrope,Arial,sans-serif;letter-spacing:-1.2px;margin:6px 0}
+.details p{color:#8b8882;font-size:12px;line-height:1.7;margin:0}
+.detail-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.source-btn{padding:14px 22px;background:#191919;color:white;border-radius:3px;font-size:11px;letter-spacing:1.3px;font-weight:800;display:inline-block;transition:.2s}
+.source-btn:hover{background:var(--accent);transform:translateY(-2px)}
+.section-header{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin:29px 0 19px}
+.section-header h2{font:800 28px Manrope,Arial,sans-serif;margin:0;letter-spacing:-1px}
+.section-header p{margin:5px 0 0;color:#97938b;font-size:12px}
+.search{display:flex;align-items:center;background:white;border:1px solid #e0dcd5;border-radius:4px;padding:0 12px;min-width:235px}
+.search span{color:#aaa}
+.search input{background:none;border:0;outline:0!important;padding:13px 10px;min-width:0;width:100%;font-size:12px;color:#252525}
+.gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.product{position:relative;background:#fff;border:1px solid #e7e3dc;overflow:hidden;transition:box-shadow .3s,transform .3s;cursor:pointer}
+.product:hover{transform:translateY(-5px);box-shadow:0 23px 42px #14131217}
+.product-image{height:300px;background:linear-gradient(#f9f9f8,#f3f1ee);display:grid;place-items:center;overflow:hidden;position:relative}
+.product-image img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;padding:18px 25px;transition:transform .6s cubic-bezier(.2,.7,.3,1)}
+.product:hover .product-image img{transform:scale(1.065)}
+.product-image .photo-fail{display:none;color:#68645e;letter-spacing:3px;font-size:17px;font-weight:800}
+.product-image.broken img{display:none}.product-image.broken .photo-fail{display:block}
+.edition{position:absolute;left:16px;top:16px;background:#fffdfa;padding:8px 11px;font-size:9px;letter-spacing:1.5px;font-weight:800}
+.product-info{padding:20px}
+.product-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
+.product-brand{font-size:10px;letter-spacing:2.4px;font-weight:800;color:#968b83}
+.product-crest{height:27px;width:27px;object-fit:contain}
+.product h3{font:800 17px Manrope,Arial,sans-serif;line-height:1.3;letter-spacing:-.6px;margin:0 0 8px}
+.player{font-size:11px;color:#8e8a84;margin:0 0 16px}
+.card-bottom{border-top:1px solid #eeeae5;padding-top:14px;display:flex;align-items:center;justify-content:space-between}
+.card-bottom span{font-size:10px;color:#aaa09a}
+.card-bottom button{border:0;background:transparent;font-size:11px;letter-spacing:.7px;font-weight:800;color:#262626}
+.card-bottom button:hover{color:var(--accent)}
+.empty{grid-column:1/-1;padding:65px;text-align:center;color:#838078;background:#fff}
+footer{background:#1c1c1c;color:#c3bcb6;padding:32px 25px;text-align:center;font-size:11px;line-height:1.9}
+footer strong{color:#fff;letter-spacing:1.5px}
+footer a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:850px){header{padding:20px 24px}nav{display:none}.header-side{display:none}.stage-card[data-pos="-2"]{transform:translate(-50%,-50%) translateX(-252px) scale(.50) rotate(-7deg)}.stage-card[data-pos="-1"]{transform:translate(-50%,-50%) translateX(-135px) scale(.73) rotate(-3deg)}.stage-card[data-pos="1"]{transform:translate(-50%,-50%) translateX(135px) scale(.73) rotate(3deg)}.stage-card[data-pos="2"]{transform:translate(-50%,-50%) translateX(252px) scale(.50) rotate(7deg)}.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}.details{grid-template-columns:1fr}}
+@media(max-width:540px){main{padding:0 12px 42px}.intro{padding:37px 10px 20px}.intro h1{font-size:43px;letter-spacing:-3px}.filters{gap:7px}.filter{padding:10px 15px;min-width:auto;font-size:11px}.filter .brand-icon{width:18px;height:16px}.showroom{border-radius:0}.top-show{padding-top:25px}.stage{height:333px;margin-top:5px}.stage:before{top:49px}.stage-card{width:180px;height:277px}.stage-card .photo{width:180px;height:228px;margin-top:22px}.stage-card .hanger{top:4px}.stage-card[data-pos="-2"]{transform:translate(-50%,-50%) translateX(-182px) scale(.49) rotate(-8deg)}.stage-card[data-pos="-1"]{transform:translate(-50%,-50%) translateX(-106px) scale(.70) rotate(-4deg)}.stage-card[data-pos="0"]{transform:translate(-50%,-50%) scale(1.02)}.stage-card[data-pos="0"]:hover{transform:translate(-50%,-50%) scale(1.08)}.stage-card[data-pos="1"]{transform:translate(-50%,-50%) translateX(106px) scale(.70) rotate(4deg)}.stage-card[data-pos="2"]{transform:translate(-50%,-50%) translateX(182px) scale(.49) rotate(8deg)}.stage-footer{padding:14px 15px 21px}.stage-note{display:none}.details{padding:24px 4px 25px}.detail-actions{margin-left:64px}.section-header{flex-direction:column;align-items:stretch}.gallery{gap:10px}.product-image{height:215px}.product-image img{padding:13px}.product-info{padding:13px}.product h3{font-size:13px}.product-meta{margin-bottom:8px}.product-crest{width:23px;height:23px}.edition{top:8px;left:8px;padding:6px 7px;font-size:8px}.card-bottom span{display:none}.source-btn{font-size:10px;padding:12px 16px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="announcement">THE KIT CLUB · FOOTBALL CULTURE · 2026 / 27</div>
+<header>
+  <a href="#" class="identity" aria-label="Ir al inicio de The Kit Club"><span class="monogram">KC</span><span><strong>THE KIT CLUB.</strong><small>FOOTBALL EDITION</small></span></a>
+  <nav aria-label="Secciones"><a href="#escaparate">ESCAPARATE</a><a href="#coleccion">COLECCIÓN</a><a href="#informacion">ACERCA DEL CATÁLOGO</a></nav>
+  <span class="header-side">DESIGNED FOR THE GAME ↗</span>
+</header>
+<main>
+ <section class="intro">
+  <div class="overline">LA NUEVA ERA DEL ESTILO DEPORTIVO</div>
+  <h1>Wear the <em>game.</em></h1>
+  <p>Una selección visual de camisetas reales de Nike, Adidas y Puma. Descubre cada equipo con una experiencia de escaparate, transiciones suaves y detalles de colección.</p>
+ </section>
+ <div class="filters" role="group" aria-label="Filtrar por marca">
+   <button class="filter active" type="button" data-brand="Todas" aria-pressed="true">TODAS</button>
+   <button class="filter" type="button" data-brand="Nike" aria-pressed="false"><img class="brand-icon" alt="" src="https://cdn.jsdelivr.net/npm/simple-icons@v15/icons/nike.svg"> NIKE</button>
+   <button class="filter" type="button" data-brand="Adidas" aria-pressed="false"><img class="brand-icon" alt="" src="https://cdn.jsdelivr.net/npm/simple-icons@v15/icons/adidas.svg"> ADIDAS</button>
+   <button class="filter" type="button" data-brand="Puma" aria-pressed="false"><img class="brand-icon" alt="" src="https://cdn.jsdelivr.net/npm/simple-icons@v15/icons/puma.svg"> PUMA</button>
+ </div>
+ <section class="showroom" id="escaparate" aria-label="Escaparate interactivo">
+  <div class="top-show"><h2 class="brand-heading" id="brandTitle">THE COLLECTION</h2><p class="brand-strap">SEASON 26/27 · SELECT YOUR STYLE</p></div>
+  <div class="stage" id="stage" aria-label="Desfile de camisetas de fútbol"></div>
+  <div class="stage-footer">
+    <div class="controls"><button class="round" id="previous" aria-label="Camiseta anterior">←</button><span class="count" id="counter" aria-live="polite">01 / 09</span><button class="round" id="next" aria-label="Camiseta siguiente">→</button></div>
+    <span class="stage-note">ARRASTRA O UTILIZA LAS FLECHAS PARA EXPLORAR</span>
+    <button class="autoplay" id="pause" type="button" aria-pressed="false">Ⅱ PAUSAR</button>
+  </div>
+ </section>
+ <section class="details" aria-live="polite">
+   <div class="detail-info">
+    <img class="crest" id="selectedCrest" alt="" src="">
+    <div class="crest-alt" id="selectedFallback" aria-hidden="true">FC</div>
+    <div><div class="detail-kicker" id="selectedBrand">NIKE · LOCAL 26/27</div><h2 id="selectedTeam">FC Barcelona</h2><p id="selectedPlayer">Jugador destacado · Lamine Yamal</p></div>
+   </div>
+   <div class="detail-actions"><a class="source-btn" id="selectedLink" href="#" target="_blank" rel="noopener noreferrer">VER CAMISETA ORIGINAL ↗</a></div>
+ </section>
+ <section id="coleccion">
+  <div class="section-header">
+   <div><h2>La colección completa.</h2><p>Fotografías de camisetas reales · Selección 2026/27</p></div>
+   <label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" aria-label="Buscar camiseta, equipo o jugador" placeholder="Buscar equipo o jugador..."></label>
+  </div>
+  <div class="gallery" id="gallery"></div>
+ </section>
+</main>
+<footer id="informacion">
+  <strong>THE KIT CLUB.</strong> · Catálogo conceptual de demostración, no es tienda oficial ni está afiliado con Nike, Adidas, Puma o los clubes.<br>
+  Imágenes y distintivos de terceros únicamente como referencia visual. Los modelos mostrados son camisetas base, no necesariamente incluyen el nombre o número del jugador destacado. Disponibilidad y precios se consultan en la fuente enlazada.<br>
+  Diseño HTML/CSS/JavaScript · © <span id="year"></span>
+</footer>
+<script>
+"use strict";
+const products=[
+ {id:"barca",brand:"Nike",team:"FC Barcelona",player:"Lamine Yamal",season:"26/27",badge:"81",short:"FCB",image:"https://www.prodirectsport.us/cdn/shop/files/1053713_main.jpg?v=1782892083",url:"https://www.nike.com/t/fc-barcelona-2026-27-stadium-home-mens-nike-dri-fit-soccer-replica-jersey-yT3tF8r4",desc:"La identidad blaugrana"},
+ {id:"psg",brand:"Nike",team:"Paris Saint-Germain",player:"Ousmane Dembélé",season:"26/27",badge:"524",short:"PSG",image:"https://sc3.locondo.jp/contents/commodity_image/NI/NI1757EM079708_1_l.jpg",url:"https://www.nike.com/t/paris-saint-germain-2026-27-match-home-mens-nike-aero-fit-soccer-authentic-jersey-7I89vLJs/II2732-417",desc:"Azul, blanco y rojo"},
+ {id:"atleti",brand:"Nike",team:"Atlético de Madrid",player:"Julián Álvarez",season:"26/27",badge:"78",short:"ATM",image:"https://shop.atleticodemadrid.com/on/demandware.static/-/Sites-atm-master-catalog/default/dw59595213/II2740-101.jpg",url:"https://shop.atleticodemadrid.com/en/men%E2%80%99s-home-match-26-27-jersey/II2740-101.html",desc:"El rojo y blanco del Metropolitano"},
+ {id:"madrid",brand:"Adidas",team:"Real Madrid",player:"Kylian Mbappé",season:"26/27",badge:"86",short:"RMA",image:"https://assets.adidas.com/images/h_2000%2Cf_auto%2Cq_auto%2Cfl_lossy%2Cc_fill%2Cg_auto/58818239653a439e909b01e9822f4ac6_9366/Jersey_Local_Real_Madrid_26-27_Blanco_JZ7206_01_laydown.jpg",url:"https://www.adidas.mx/jersey-local-real-madrid-26-27/JZ7206.html",desc:"Elegancia blanca"},
+ {id:"bayern",brand:"Adidas",team:"FC Bayern Múnich",player:"Harry Kane",season:"26/27",badge:"5",short:"FCB",image:"https://www.sportsdirect.com/images/imgzoom/37/37743508_xxl.jpg",url:"https://www.sportsdirect.hu/adidas-bayern-munich-home-shirt-2026/27-mens-377435",desc:"Rojo de Múnich"},
+ {id:"united",brand:"Adidas",team:"Manchester United",player:"Bruno Fernandes",season:"26/27",badge:"66",short:"MUN",image:"https://thesoccerfactory.com/cdn/shop/files/KA6871_1_APPAREL_Photography_FrontCenterView_white.jpg?v=1780029731",url:"https://thesoccerfactory.com/products/manchester-united-home-jersey-26-27",desc:"El color de Old Trafford"},
+ {id:"city",brand:"Puma",team:"Manchester City",player:"Erling Haaland",season:"26/27",badge:"65",short:"MCI",image:"https://www.unisportsoccer.com/cdn/shop/files/784323_01.png?v=1779217560",url:"https://www.mancity.com/news/club/manchester-city-202627-home-kit-launched-63914816",desc:"Sky blue en degradado"},
+ {id:"milan",brand:"Puma",team:"AC Milan",player:"Rafael Leão",season:"26/27",badge:"98",short:"ACM",image:"https://images.puma.com/image/upload/f_auto%2Cq_auto%2Cw_2000%2Cb_rgb%3AFAFAFA/global/784121/01/fnd/BRA/fmt/png",url:"https://br.puma.com/pd/camisa-ac-milan-26-27-home-masculina/784121.html",desc:"Las rayas rossoneras"},
+ {id:"dortmund",brand:"Puma",team:"Borussia Dortmund",player:"Serhou Guirassy",season:"26/27",badge:"4",short:"BVB",image:"https://www.arifootballstore.com/media/catalog/product/cache/6e478a31517304dced53ac4d3f3d5560/p/u/puma_borussia_dortmund_2026_2027_home_player_jersey_78408701__01.jpg",url:"https://www.arifootballstore.com/jerseys/european-league/borussia-dortmund/78408701-puma-borussia-dortmund-2026-2027-home-player-jersey.html",desc:"El amarillo del Signal Iduna Park"}
+];
+const stage=document.getElementById("stage");
+const gallery=document.getElementById("gallery");
+const counter=document.getElementById("counter");
+const crest=document.getElementById("selectedCrest");
+const selectedFallback=document.getElementById("selectedFallback");
+const selectedLink=document.getElementById("selectedLink");
+const title=document.getElementById("brandTitle");
+const search=document.getElementById("search");
+const pause=document.getElementById("pause");
+let brand="Todas",activeId=products[0].id,visible=products.slice(),manualPause=false,hoverPause=false;
+const reduceMotion=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+if(reduceMotion){manualPause=true;pause.textContent="▶ REPRODUCIR"}
+const HANGER='<svg viewBox="0 0 80 35" aria-hidden="true"><path d="M36 11c-3-12 10-13 10-4 0 5-5 6-5 10M41 17 6 31a3 3 0 0 0 2 5h65a3 3 0 0 0 2-5L41 17" transform="translate(0 -4)" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>';
+const allStage=new Map();
+function photoError(img,place){img.addEventListener("error",()=>{place.classList.add(place.classList.contains("stage-card")?"is-broken":"broken")})}
+function makeStage(p){
+ const card=document.createElement("div");card.className="stage-card";card.dataset.id=p.id;card.dataset.pos="hidden";card.setAttribute("role","group");card.setAttribute("aria-label",p.brand+" "+p.team);
+ const hanger=document.createElement("div");hanger.className="hanger";hanger.innerHTML=HANGER;
+ const photo=document.createElement("div");photo.className="photo";
+ const img=document.createElement("img");img.src=p.image;img.alt="Camiseta local "+p.team+" "+p.season+" de "+p.brand;img.loading=p.id===activeId?"eager":"lazy";img.decoding="async";
+ photoError(img,card);
+ const fallback=document.createElement("div");fallback.className="fallback";fallback.textContent=p.short;
+ const label=document.createElement("span");label.className="photo-badge";label.textContent=p.brand.toUpperCase()+" · "+p.season;
+ photo.append(img,fallback,label);card.append(hanger,photo);card.addEventListener("click",()=>choose(p.id));stage.appendChild(card);allStage.set(p.id,card);
+}
+products.forEach(makeStage);
+function activeProduct(){return visible.find(p=>p.id===activeId)||visible[0]}
+function applyPositions(){
+ const n=visible.length;
+ allStage.forEach((card,id)=>{
+  const current=visible.findIndex(p=>p.id===id);
+  if(current===-1||n===0){card.dataset.pos="hidden";card.setAttribute("aria-hidden","true");return}
+  const index=visible.findIndex(p=>p.id===activeId);
+  let d=current-index;
+  if(d>n/2)d-=n;
+  if(d< -n/2)d+=n;
+  card.dataset.pos=Math.abs(d)>2?"hidden":String(d);
+  card.setAttribute("aria-hidden",d===0?"false":"true");
+ });
+}
+function renderActive(){
+ const p=activeProduct();
+ if(!p){return}
+ activeId=p.id;
+ applyPositions();
+ counter.textContent=String(visible.findIndex(x=>x.id===p.id)+1).padStart(2,"0")+" / "+String(visible.length).padStart(2,"0");
+ title.textContent=brand==="Todas"?p.brand.toUpperCase():brand.toUpperCase();
+ document.getElementById("selectedBrand").textContent=p.brand.toUpperCase()+" · HOME "+p.season;
+ document.getElementById("selectedTeam").textContent=p.team;
+ document.getElementById("selectedPlayer").textContent="Jugador destacado · "+p.player+"  /  "+p.desc;
+ selectedLink.href=p.url;
+ crest.style.display="block";selectedFallback.style.display="none";selectedFallback.textContent=p.short;
+ crest.src="https://crests.football-data.org/"+p.badge+".png";
+ crest.alt="Escudo "+p.team;
+}
+crest.addEventListener("error",()=>{crest.style.display="none";selectedFallback.style.display="grid"});
+function choose(id){if(!visible.some(p=>p.id===id))return;activeId=id;renderActive()}
+function cycle(delta){if(!visible.length)return;const i=visible.findIndex(x=>x.id===activeId);activeId=visible[(i+delta+visible.length)%visible.length].id;renderActive()}
+function renderGallery(){
+ gallery.textContent="";
+ if(!visible.length){const d=document.createElement("div");d.className="empty";d.textContent="No encontramos camisetas con esos filtros.";gallery.appendChild(d);return}
+ const frag=document.createDocumentFragment();
+ visible.forEach(p=>{
+  const card=document.createElement("article");card.className="product";card.tabIndex=0;card.setAttribute("aria-label","Ver "+p.team);
+  const imgWrap=document.createElement("div");imgWrap.className="product-image";
+  const photo=document.createElement("img");photo.src=p.image;photo.alt="Camiseta "+p.team+" "+p.season+" "+p.brand;photo.loading="lazy";photo.decoding="async";photoError(photo,imgWrap);
+  const fallback=document.createElement("span");fallback.className="photo-fail";fallback.textContent=p.short;
+  const edition=document.createElement("span");edition.className="edition";edition.textContent="HOME · "+p.season;
+  imgWrap.append(photo,fallback,edition);
+  const content=document.createElement("div");content.className="product-info";
+  const meta=document.createElement("div");meta.className="product-meta";
+  const brandLabel=document.createElement("span");brandLabel.className="product-brand";brandLabel.textContent=p.brand.toUpperCase();
+  const badge=document.createElement("img");badge.className="product-crest";badge.src="https://crests.football-data.org/"+p.badge+".png";badge.alt="Escudo de "+p.team;badge.loading="lazy";badge.addEventListener("error",()=>{badge.style.display="none"});
+  meta.append(brandLabel,badge);
+  const h=document.createElement("h3");h.textContent=p.team;
+  const player=document.createElement("p");player.className="player";player.textContent="Jugador destacado · "+p.player;
+  const bottom=document.createElement("div");bottom.className="card-bottom";
+  const season=document.createElement("span");season.textContent="TEMPORADA 26/27";
+  const btn=document.createElement("button");btn.type="button";btn.textContent="EXPLORAR ↗";
+  bottom.append(season,btn);content.append(meta,h,player,bottom);card.append(imgWrap,content);
+  const select=()=>{choose(p.id);document.getElementById("escaparate").scrollIntoView({behavior:reduceMotion?"auto":"smooth",block:"center"})};
+  card.addEventListener("click",select);
+  card.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();select()}});
+  frag.appendChild(card);
+ });
+ gallery.appendChild(frag);
+}
+function filter(){
+ const q=search.value.trim().toLocaleLowerCase("es");
+ visible=products.filter(p=>(brand==="Todas"||p.brand===brand)&&[p.brand,p.team,p.player,p.desc].join(" ").toLocaleLowerCase("es").includes(q));
+ if(!visible.length){
+  document.getElementById("selectedTeam").textContent="Sin resultados";
+  document.getElementById("selectedPlayer").textContent="Prueba otra búsqueda o marca.";
+  title.textContent="THE COLLECTION";counter.textContent="00 / 00";selectedLink.hidden=true;
+  allStage.forEach(card=>{card.dataset.pos="hidden";card.setAttribute("aria-hidden","true")});
+ }else{selectedLink.hidden=false;if(!visible.some(p=>p.id===activeId))activeId=visible[0].id;renderActive()}
+ renderGallery();
+}
+document.querySelectorAll("[data-brand]").forEach(btn=>btn.addEventListener("click",()=>{
+ brand=btn.dataset.brand;
+ document.querySelectorAll("[data-brand]").forEach(x=>{const active=x===btn;x.classList.toggle("active",active);x.setAttribute("aria-pressed",String(active))});
+ filter();
+}));
+search.addEventListener("input",filter);
+document.getElementById("previous").addEventListener("click",()=>cycle(-1));
+document.getElementById("next").addEventListener("click",()=>cycle(1));
+document.addEventListener("keydown",e=>{
+ if(e.target.matches("input,textarea")||e.altKey||e.ctrlKey||e.metaKey)return;
+ if(e.key==="ArrowLeft")cycle(-1);
+ if(e.key==="ArrowRight")cycle(1);
+});
+let startX=null;
+stage.addEventListener("touchstart",e=>{startX=e.touches[0].clientX},{passive:true});
+stage.addEventListener("touchend",e=>{if(startX===null)return;const x=e.changedTouches[0].clientX-startX;if(Math.abs(x)>45)cycle(x<0?1:-1);startX=null},{passive:true});
+stage.addEventListener("mouseenter",()=>{hoverPause=true});
+stage.addEventListener("mouseleave",()=>{hoverPause=false});
+pause.addEventListener("click",()=>{manualPause=!manualPause;pause.textContent=manualPause?"▶ REPRODUCIR":"Ⅱ PAUSAR";pause.setAttribute("aria-pressed",String(manualPause))});
+setInterval(()=>{if(!manualPause&&!hoverPause&&!document.hidden&&visible.length>1)cycle(1)},5400);
+document.getElementById("year").textContent=String(new Date().getFullYear());
+filter();
+</script>
+</body>
+</html>
