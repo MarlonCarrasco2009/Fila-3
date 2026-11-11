@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090e1e">
+  <meta name="description" content="Página personal de Jerry Edson Lumba Sinarahua.">
+  <title>Jerry Edson Lumba Sinarahua | Mi espacio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{color-scheme:dark;--bg:#090e1e;--text:#f7fbff;--muted:#a7b6d0;--blue:#6b85ff;--cyan:#79e9ed}
+    *{box-sizing:border-box}
+    body{margin:0;min-height:100vh;overflow-x:hidden;font-family:"DM Sans",sans-serif;color:var(--text);background:radial-gradient(ellipse at 15% 20%,#23376a 0%,transparent 42%),radial-gradient(ellipse at 92% 85%,#244f5e 0%,transparent 42%),var(--bg)}
+    .grid{position:fixed;inset:0;pointer-events:none;opacity:.23;background-image:linear-gradient(#ffffff19 1px,transparent 1px),linear-gradient(90deg,#ffffff19 1px,transparent 1px);background-size:55px 55px;mask-image:linear-gradient(90deg,#000,transparent 100%)}
+    .orb{position:fixed;pointer-events:none;border-radius:50%;filter:blur(4px);animation:float 8s ease-in-out infinite alternate}
+    .orb.one{width:340px;height:340px;left:-120px;bottom:-140px;background:radial-gradient(circle,#457fff5b,transparent 70%)}
+    .orb.two{width:410px;height:410px;right:-140px;top:-140px;background:radial-gradient(circle,#26e4d54d,transparent 70%);animation-delay:-4s}
+    @keyframes float{to{transform:translate(36px,-26px) scale(1.11)}}
+    .container{position:relative;z-index:1;max-width:1160px;min-height:100vh;padding:35px 30px 55px;margin:auto;display:flex;flex-direction:column}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:12px;font:700 19px "Space Grotesk",sans-serif;letter-spacing:.3px}
+    .brand-mark{width:43px;height:43px;display:grid;place-items:center;border-radius:14px;background:linear-gradient(145deg,#4f76ff,#46ddd4);color:#081126;box-shadow:0 8px 30px #3975ff50}
+    .top-tag{color:#b7d2e8;border:1px solid #a5c8ff3b;background:#ffffff0a;border-radius:99px;padding:10px 16px;font-size:12px}
+    main{flex:1;display:grid;grid-template-columns:1.3fr .8fr;align-items:center;gap:52px;padding:55px 0}
+    .eyebrow{display:inline-flex;align-items:center;gap:10px;letter-spacing:2px;color:#9ee9e7;font-size:12px;font-weight:700;margin-bottom:24px}
+    .dot{width:8px;height:8px;border-radius:50%;background:#62ecd3;box-shadow:0 0 16px #62ecd3}
+    h1{font:700 clamp(48px,6.5vw,88px)/1.02 "Space Grotesk",sans-serif;letter-spacing:-4px;margin:0 0 25px;overflow-wrap:anywhere}
+    h1 span{background:linear-gradient(95deg,#fff,#90d5ff 45%,#75ebdb);background-clip:text;-webkit-background-clip:text;color:transparent}
+    .intro{max-width:540px;color:#c4d0e4;line-height:1.9;font-size:17px}
+    .pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:33px}
+    .pills span{padding:11px 15px;border:1px solid #ffffff2d;border-radius:99px;color:#d4e7f7;background:#ffffff09;font-size:13px}
+    .portrait{width:100%;aspect-ratio:1/1;max-width:400px;justify-self:center;position:relative;display:grid;place-items:center}
+    .ring{position:absolute;inset:2%;border:1px solid #86b5ff60;border-radius:50%;animation:spin 23s linear infinite}
+    .ring:before{content:"✦";position:absolute;top:8%;left:14%;font-size:25px;color:#8ff0f5;text-shadow:0 0 18px #8ff0f5}
+    .ring.two{inset:12%;transform:rotate(40deg);border-style:dashed;opacity:.5;animation-duration:31s;animation-direction:reverse}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .center{width:64%;aspect-ratio:1;border-radius:32%;display:grid;place-items:center;font:700 clamp(58px,9vw,112px) "Space Grotesk",sans-serif;color:white;background:linear-gradient(145deg,#253b8d,#427ed2 45%,#2acac4);box-shadow:0 20px 95px #347de967,0 0 70px #36dac13d;transform:rotate(-8deg);animation:bob 6s ease-in-out infinite}
+    .center span{transform:rotate(8deg)}
+    @keyframes bob{50%{transform:rotate(-5deg) translateY(-13px)}}
+    footer{border-top:1px solid #ffffff22;padding-top:22px;color:#9eacc8;font-size:12px;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+    @media(max-width:780px){main{grid-template-columns:1fr;text-align:center;gap:32px;padding:66px 0}.eyebrow{justify-content:center}.intro{margin:auto}.pills{justify-content:center}.portrait{max-width:270px;order:-1}h1{letter-spacing:-2px}.top-tag{display:none}}
+    @media(max-width:420px){.container{padding:22px 18px 30px}h1{font-size:clamp(39px,11vw,55px)}.intro{font-size:15px}.portrait{max-width:225px}footer{justify-content:center}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+  </style>
+</head>
+<body>
+  <div class="grid" aria-hidden="true"></div><div class="orb one" aria-hidden="true"></div><div class="orb two" aria-hidden="true"></div>
+  <div class="container">
+    <header><div class="brand"><span class="brand-mark">JL</span> Jerry Lumba</div><div class="top-tag">✦ Bienvenido a mi página</div></header>
+    <main>
+      <section>
+        <div class="eyebrow"><span class="dot"></span> MI ESPACIO PERSONAL</div>
+        <h1>Hola, soy<br><span>Jerry Edson<br>Lumba Sinarahua.</span></h1>
+        <p class="intro">Bienvenido a mi página web. Soy estudiante de Ingeniería de Software con Inteligencia Artificial. Me interesa la tecnología, la programación y crear soluciones digitales que conviertan ideas en proyectos reales.</p>
+        <div class="pills"><span>✦ Programación</span><span>✦ Inteligencia artificial</span><span>✦ Tecnología</span></div>
+      </section>
+      <div class="portrait" aria-label="Monograma decorativo con las iniciales JL" role="img">
+        <div class="ring"></div><div class="ring two"></div><div class="center"><span>JL</span></div>
+      </div>
+    </main>
+    <footer><span>© <span id="year"></span> Jerry Edson Lumba Sinarahua</span><span>Diseñado con HTML y CSS · Hecho con creatividad</span></footer>
+  </div>
+  <script>document.getElementById("year").textContent=new Date().getFullYear();</script>
+</body>
+</html>
