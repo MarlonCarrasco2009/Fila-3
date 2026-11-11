@@ -6,8 +6,55 @@ const products=[
  {name:'HERITAGE RED TEE',desc:'A bold statement in motion.',type:'tee',color:'#c7262b',trim:'#9d161d'},
  {name:'ROYAL COURT JERSEY',desc:'Sport meets the new generation.',type:'jersey',color:'#263e9e',trim:'#1b286b'}
 ];
+// Configuración de imágenes editables directamente en index.html
+products.forEach((product, i) => {
+  const urls = (window.PRODUCT_IMAGES || [])[i] || {};
+  product.imageFront = (urls.front || '').trim();
+  product.imageBack = (urls.back || '').trim();
+});
 const $=s=>document.querySelector(s),wrap=$('#items');let active=1,back=false;
-function clothing(p,i){let c=p.color,t=p.trim,base='';const seam=`stroke="${t}" stroke-width="3" stroke-linejoin="round"`;if(p.type==='hoodie'){base=`<path d="M103 48 Q145 5 187 48 L221 67 266 174 222 196 198 136 201 323 89 323 92 136 68 196 24 174 69 67Z" fill="${c}" ${seam}/><path d="M107 48 Q145 90 183 48 Q180 17 145 12 Q110 17 107 48" fill="${t}" stroke="${c}" stroke-width="6"/><path d="M104 221 Q145 238 187 221 L181 264 109 264Z" fill="${t}" opacity=".4"/><text x="145" y="157" text-anchor="middle" font-size="24" font-weight="900" fill="#c6d1d4" opacity=".55">PUMA</text>`}else if(p.type==='jersey'){base=`<path d="M100 43 L120 34 Q145 56 170 34 L190 43 218 96 190 113 190 320 100 320 100 113 72 96Z" fill="${c}" ${seam}/><path d="M120 34 Q145 68 170 34" fill="none" stroke="#f2f0eb" stroke-width="8"/><path d="M100 43 L74 95 101 113 M190 43 L216 95 189 113" fill="none" stroke="${t}" stroke-width="11"/><text x="145" y="175" text-anchor="middle" font-size="20" font-weight="900" fill="#eceae6">VENCEDORES</text><text x="145" y="210" text-anchor="middle" font-size="11" font-weight="700" fill="#eceae6">ATHLETIC CLUB</text>`}else if(p.type==='pants'){base=`<path d="M93 47 L197 47 213 323 161 323 145 155 129 323 77 323Z" fill="${c}" ${seam}/><path d="M93 69 L197 69 M145 155 L145 72 M98 91 L122 108 M192 91 L169 108" fill="none" stroke="${t}" stroke-width="4"/>`}else{base=`<path d="M105 44 L121 34 Q145 53 169 34 L185 44 242 87 213 136 189 120 189 315 101 315 101 120 77 136 48 87Z" fill="${c}" ${seam}/><path d="M121 34 Q145 67 169 34" fill="none" stroke="${t}" stroke-width="8"/><text x="145" y="169" text-anchor="middle" font-size="28" font-weight="900" fill="white">PUMA</text>`}return `<svg viewBox="0 0 290 345" role="img" aria-label="${p.name}"><path d="M145 25 C130 20 137 2 148 7 C159 12 151 23 145 28 L102 51 Q98 56 105 56 L185 56 Q192 56 188 51Z" fill="none" stroke="#777" stroke-width="2.2"/>${base}${back?'<path d="M106 120 H184 V255 H106Z" fill="#000" opacity=".09"/>':''}</svg>`}
-products.forEach((p,i)=>{let el=document.createElement('div');el.className='item';el.innerHTML=clothing(p,i);el.addEventListener('click',()=>setActive(i));wrap.append(el)});
-function setActive(n){active=(n+products.length)%products.length;document.querySelectorAll('.item').forEach((el,i)=>{let d=i-active;if(d>3)d-=6;if(d< -3)d+=6;el.style.setProperty('--x',`${d*clampSpacing()}px`);el.style.setProperty('--scale',d===0?'1.12':Math.abs(d)===1?'.77':'.60');el.style.setProperty('--rotate',`${d*1.5}deg`);el.style.setProperty('--blur',d===0?'0px':Math.abs(d)===1?'4px':'8px');el.style.setProperty('--opacity',d===0?'1':Math.abs(d)===1?'.67':'.34');el.style.zIndex=10-Math.abs(d)});$('#name').textContent=products[active].name;$('#desc').textContent=products[active].desc;$('#counter').textContent=`${String(active+1).padStart(2,'0')} — ${String(products.length).padStart(2,'0')}`}
-function clampSpacing(){return Math.min(Math.max(innerWidth*.19,105),235)}function flip(value){back=value;$('#front').classList.toggle('active',!back);$('#back').classList.toggle('active',back);document.querySelectorAll('.item').forEach((el,i)=>el.innerHTML=clothing(products[i],i))}$('#front').onclick=()=>flip(false);$('#back').onclick=()=>flip(true);$('#prev').onclick=()=>setActive(active-1);$('#next').onclick=()=>setActive(active+1);window.addEventListener('resize',()=>setActive(active));window.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')setActive(active-1);if(e.key==='ArrowRight')setActive(active+1)});let start=0;wrap.addEventListener('pointerdown',e=>start=e.clientX);wrap.addEventListener('pointerup',e=>{let diff=e.clientX-start;if(Math.abs(diff)>45)setActive(active+(diff<0?1:-1))});$('#menuBtn').onclick=$('#availability').onclick=()=>$('#modal').showModal();$('#close').onclick=$('#dismiss').onclick=()=>$('#modal').close();setActive(active);
+function clothing(p,i){
+  const url = back ? (p.imageBack || p.imageFront) : p.imageFront;
+  if(url){
+    const photo=document.createElement('img');
+    photo.className='product-photo';
+    photo.alt=p.name;
+    photo.loading='lazy';
+    photo.src=url;
+    photo.onerror=()=>{photo.replaceWith(createIllustration(p,i));};
+    return photo;
+  }
+  return createIllustration(p,i).outerHTML;
+}
+function createIllustration(p,i){
+  const holder=document.createElement('div');
+  holder.innerHTML=illustrationMarkup(p,i);
+  return holder.firstElementChild;
+}
+function illustrationMarkup(p,i){let c=p.color,t=p.trim,base='';const seam=`stroke="${t}" stroke-width="3" stroke-linejoin="round"`;if(p.type==='hoodie'){base=`<path d="M103 48 Q145 5 187 48 L221 67 266 174 222 196 198 136 201 323 89 323 92 136 68 196 24 174 69 67Z" fill="${c}" ${seam}/><path d="M107 48 Q145 90 183 48 Q180 17 145 12 Q110 17 107 48" fill="${t}" stroke="${c}" stroke-width="6"/><path d="M104 221 Q145 238 187 221 L181 264 109 264Z" fill="${t}" opacity=".4"/><text x="145" y="157" text-anchor="middle" font-size="24" font-weight="900" fill="#c6d1d4" opacity=".55">PUMA</text>`}else if(p.type==='jersey'){base=`<path d="M100 43 L120 34 Q145 56 170 34 L190 43 218 96 190 113 190 320 100 320 100 113 72 96Z" fill="${c}" ${seam}/><path d="M120 34 Q145 68 170 34" fill="none" stroke="#f2f0eb" stroke-width="8"/><path d="M100 43 L74 95 101 113 M190 43 L216 95 189 113" fill="none" stroke="${t}" stroke-width="11"/><text x="145" y="175" text-anchor="middle" font-size="20" font-weight="900" fill="#eceae6">VENCEDORES</text><text x="145" y="210" text-anchor="middle" font-size="11" font-weight="700" fill="#eceae6">ATHLETIC CLUB</text>`}else if(p.type==='pants'){base=`<path d="M93 47 L197 47 213 323 161 323 145 155 129 323 77 323Z" fill="${c}" ${seam}/><path d="M93 69 L197 69 M145 155 L145 72 M98 91 L122 108 M192 91 L169 108" fill="none" stroke="${t}" stroke-width="4"/>`}else{base=`<path d="M105 44 L121 34 Q145 53 169 34 L185 44 242 87 213 136 189 120 189 315 101 315 101 120 77 136 48 87Z" fill="${c}" ${seam}/><path d="M121 34 Q145 67 169 34" fill="none" stroke="${t}" stroke-width="8"/><text x="145" y="169" text-anchor="middle" font-size="28" font-weight="900" fill="white">PUMA</text>`}return `<svg viewBox="0 0 290 345" role="img" aria-label="${p.name}"><path d="M145 25 C130 20 137 2 148 7 C159 12 151 23 145 28 L102 51 Q98 56 105 56 L185 56 Q192 56 188 51Z" fill="none" stroke="#777" stroke-width="2.2"/>${base}${back?'<path d="M106 120 H184 V255 H106Z" fill="#000" opacity=".09"/>':''}</svg>`}
+products.forEach((p,i)=>{let el=document.createElement('div');el.className='item';const visual=clothing(p,i);if(typeof visual==='string')el.innerHTML=visual;else el.append(visual);el.addEventListener('click',()=>{if(active===i)openZoom();else setActive(i)});wrap.append(el)});
+function setActive(n){active=(n+products.length)%products.length;document.querySelectorAll('.item').forEach((el,i)=>{let d=i-active;if(d>3)d-=6;if(d< -3)d+=6;el.style.setProperty('--x',`${d*clampSpacing()}px`);el.style.setProperty('--scale',d===0?'1.12':Math.abs(d)===1?'.77':'.60');el.style.setProperty('--rotate',`${d*1.5}deg`);el.style.setProperty('--blur',d===0?'0px':Math.abs(d)===1?'4px':'8px');el.style.setProperty('--opacity',d===0?'1':Math.abs(d)===1?'.67':'.34');el.style.zIndex=10-Math.abs(d);el.classList.toggle('is-selected',d===0)});$('#name').textContent=products[active].name;$('#desc').textContent=products[active].desc;$('#counter').textContent=`${String(active+1).padStart(2,'0')} — ${String(products.length).padStart(2,'0')}`}
+function clampSpacing(){return Math.min(Math.max(innerWidth*.19,105),235)}function flip(value){back=value;$('#front').classList.toggle('active',!back);$('#back').classList.toggle('active',back);document.querySelectorAll('.item').forEach((el,i)=>el.replaceChildren();const visual=clothing(products[i],i);if(typeof visual==='string')el.innerHTML=visual;else el.append(visual))}$('#front').onclick=()=>flip(false);$('#back').onclick=()=>flip(true);$('#prev').onclick=()=>setActive(active-1);$('#next').onclick=()=>setActive(active+1);window.addEventListener('resize',()=>setActive(active));window.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')setActive(active-1);if(e.key==='ArrowRight')setActive(active+1)});let start=0;wrap.addEventListener('pointerdown',e=>start=e.clientX);wrap.addEventListener('pointerup',e=>{let diff=e.clientX-start;if(Math.abs(diff)>45)setActive(active+(diff<0?1:-1))});$('#menuBtn').onclick=$('#availability').onclick=()=>$('#modal').showModal();$('#close').onclick=$('#dismiss').onclick=()=>$('#modal').close();setActive(active);
+function openZoom(){
+ const overlay=$('#zoomOverlay'), card=$('#zoomCard');
+ card.replaceChildren();
+ const selected=document.querySelectorAll('.item')[active];
+ const visual=selected.querySelector('img,svg');
+ if(!visual)return;
+ const clone=visual.cloneNode(true);
+ if(clone.tagName.toLowerCase()==='img')clone.loading='eager';
+ card.append(clone);
+ $('#zoomCaption').textContent=products[active].name;
+ overlay.classList.add('open');
+ overlay.setAttribute('aria-hidden','false');
+ document.body.classList.add('zoom-open');
+ $('#zoomClose').focus();
+}
+function closeZoom(){
+ $('#zoomOverlay').classList.remove('open');
+ $('#zoomOverlay').setAttribute('aria-hidden','true');
+ document.body.classList.remove('zoom-open');
+}
+$('#zoomClose').addEventListener('click',closeZoom);
+$('#zoomOverlay').addEventListener('click',e=>{if(e.target===$('#zoomOverlay'))closeZoom()});
+window.addEventListener('keydown',e=>{if(e.key==='Escape')closeZoom()});
