@@ -1,4 +1,19 @@
 <!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PUMA — Clothes Closet</title><link rel="stylesheet" href="style.css"></head><body>
 <header><a class="brand" href="#" aria-label="Inicio PUMA">PUMA<span class="cat">↗</span></a><span class="edition">THE CLOSET / 2026</span><button class="menu" id="menuBtn" aria-label="Abrir información">MENU <span>☰</span></button></header>
 <main><div class="topline"><span>01 / THE COLLECTION</span><span>SELECT YOUR PIECE</span></div><div class="closet" id="closet"><div class="rail"></div><div class="items" id="items"></div></div><section class="details"><div class="counter" id="counter">01 — 06</div><h1 id="name">ARCHIVE HOODIE</h1><p id="desc">A timeless piece from the archive.</p><div class="switch"><button id="front" class="active">FRONT</button><button id="back">BACK</button></div><button class="availability" id="availability">SEE AVAILABILITY <span>↗</span></button></section><button class="nav prev" id="prev" aria-label="Anterior">←</button><button class="nav next" id="next" aria-label="Siguiente">→</button></main>
-<footer><span>DESIGNED TO MOVE.</span><span>DRAG OR USE ARROWS TO EXPLORE</span><span>© 2026 PUMA CONCEPT</span></footer><dialog id="modal"><button id="close" class="close">✕</button><h2>THE CLOSET</h2><p>Una demostración interactiva inspirada en el video. Las prendas son ilustraciones SVG originales; reemplázalas con fotos de tus productos cuando quieras.</p><button id="dismiss">CONTINUE EXPLORING →</button></dialog><script src="script.js"></script></body></html>
+<footer><span>DESIGNED TO MOVE.</span><span>DRAG OR USE ARROWS TO EXPLORE</span><span>© 2026 PUMA CONCEPT</span></footer><dialog id="modal"><button id="close" class="close">✕</button><h2>THE CLOSET</h2><p>Una demostración interactiva inspirada en el video. Las prendas son ilustraciones SVG originales; reemplázalas con fotos de tus productos cuando quieras.</p><button id="dismiss">CONTINUE EXPLORING →</button></dialog>
+<!-- EDITA AQUÍ LAS URLS DE TUS 6 PRODUCTOS.
+     Pega un enlace DIRECTO a una imagen (.png, .jpg, .webp, etc.).
+     Deja "" para conservar la ilustración original.
+     También puedes usar rutas locales: "imagenes/camiseta.png". -->
+<script>
+window.PRODUCT_IMAGES = [
+  { front: "", back: "" }, // 1: polera azul
+  { front: "", back: "" }, // 2: camiseta negra
+  { front: "", back: "" }, // 3: pantalón marrón
+  { front: "", back: "" }, // 4: pantalón negro
+  { front: "", back: "" }, // 5: camiseta roja
+  { front: "", back: "" }  // 6: camiseta azul
+];
+</script>
+<div class="zoom-overlay" id="zoomOverlay" aria-hidden="true" role="dialog" aria-label="Vista ampliada de la prenda"><button type="button" id="zoomClose" class="zoom-close" aria-label="Cerrar zoom">✕</button><div class="zoom-card" id="zoomCard"></div><p class="zoom-caption" id="zoomCaption"></p><span class="zoom-hint">CLIC FUERA O ESC PARA CERRAR</span></div><script src="script.js"></script></body></html>
